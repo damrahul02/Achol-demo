@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+Bengali:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 99.6%;
+    --foreground: 0 0% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 18%;
+    --primary: 0 19% 43%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 12% 65%;
+    --secondary-foreground: 0 0% 18%;
+    --muted: 0 32% 95%;
+    --muted-foreground: 0 0% 35%;
+    --accent: 0 43% 91%;
+    --accent-foreground: 0 0% 18%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 32% 90%;
+    --input: 0 12% 75%;
+    --ring: 0 19% 43%;
+    --radius: 0;
+    
+    /* Custom brand colors */
+    --deep-rose: #815D5E;
+    --muted-taupe: #B19A9A;
+    --soft-pink: #F0CDCC;
+    --blush: #FCEAE9;
+    --off-white: #FEFEFE;
+    --dark-text: #2D2D2D;
+    --medium-text: #5A5A5A;
+    --light-text: #8A8A8A;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[var(--off-white)] text-[var(--dark-text)] antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .font-bengali {
+    font-family: 'Noto Sans Bengali', sans-serif;
+  }
+  
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .text-deep-rose {
+    color: var(--deep-rose);
+  }
+  
+  .bg-deep-rose {
+    background-color: var(--deep-rose);
+  }
+  
+  .text-muted-taupe {
+    color: var(--muted-taupe);
+  }
+  
+  .bg-muted-taupe {
+    background-color: var(--muted-taupe);
+  }
+  
+  .text-soft-pink {
+    color: var(--soft-pink);
+  }
+  
+  .bg-soft-pink {
+    background-color: var(--soft-pink);
+  }
+  
+  .bg-blush {
+    background-color: var(--blush);
+  }
+  
+  .bg-off-white {
+    background-color: var(--off-white);
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    @apply bg-[var(--off-white)] text-[var(--dark-text)] px-6 py-3 sm:px-10 sm:py-4 text-xs uppercase tracking-[0.15em] transition-all duration-300 min-h-[44px];
+  }
+  
+  .btn-primary:hover {
+    @apply bg-[var(--deep-rose)] text-[var(--off-white)];
+  }
+  
+  .btn-secondary {
+    @apply border border-[var(--dark-text)] bg-transparent text-[var(--dark-text)] px-6 py-3 sm:px-10 sm:py-4 text-xs uppercase tracking-[0.15em] transition-all duration-300 min-h-[44px];
+  }
+  
+  .btn-secondary:hover {
+    @apply bg-[var(--dark-text)] text-[var(--off-white)];
+  }
+  
+  /* Link underline animation */
+  .link-underline {
+    @apply relative;
+  }
+  
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-[var(--deep-rose)] transition-all duration-300;
+  }
+  
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--blush);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--muted-taupe);
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--deep-rose);
+  }
+  
+  /* Product card hover */
+  .product-card {
+    @apply relative overflow-hidden;
+  }
+  
+  .product-card img {
+    @apply transition-transform duration-500;
+  }
+  
+  .product-card:hover img {
+    @apply scale-105;
+  }
+  
+  /* Category card hover */
+  .category-card {
+    @apply relative overflow-hidden;
+  }
+  
+  .category-card img {
+    @apply transition-transform duration-700;
+  }
+  
+  .category-card:hover img {
+    @apply scale-110;
+  }
+  
+  /* Ken Burns animation for hero */
+  @keyframes kenBurns {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.08);
+    }
+  }
+  
+  .ken-burns {
+    animation: kenBurns 20s ease-out forwards;
+  }
+  
+  /* Marquee animation */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .marquee {
+    animation: marquee 20s linear infinite;
+  }
+  
+  /* Fade in up animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  /* Stagger delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+}
+
+/* Custom selection color */
+::selection {
+  background-color: var(--soft-pink);
+  color: var(--dark-text);
+}
