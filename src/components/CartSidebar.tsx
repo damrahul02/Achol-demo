@@ -1,9 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Plus, Minus, ShoppingBag } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
+import { Link } from "react-router-dom";
 
 export function CartSidebar() {
   const { items, isOpen, setCartOpen, removeItem, updateQuantity, getTotalPrice } = useCartStore();
+  
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("en-IN", {
@@ -139,9 +141,13 @@ export function CartSidebar() {
                 <p className="text-xs text-light-text mb-4">
                   Shipping and taxes calculated at checkout
                 </p>
-                <button className="w-full bg-dark-text text-white py-4 text-xs uppercase tracking-[0.15em] hover:bg-deep-rose transition-colors">
+                <Link to="/checkout">
+                <button className="w-full bg-dark-text text-white py-4 text-xs uppercase tracking-[0.15em] hover:bg-deep-rose transition-colors"
+          
+                >
                   CHECKOUT
                 </button>
+                </Link>
                 <button
                   onClick={() => setCartOpen(false)}
                   className="w-full mt-3 border border-dark-text text-dark-text py-4 text-xs uppercase tracking-[0.15em] hover:bg-dark-text hover:text-white transition-colors"
